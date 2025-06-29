@@ -24,13 +24,14 @@ app.get('/', (req, res) => {
 })
 app.use("/api", userRouter); // Use router
 const PORT = process.env.PORT || 5000; // Fallback port in case env variable is missing
-app.listen(PORT, async () => {
+app.listen(PORT, '0.0.0.0', async () => {
   try {
     await connectDB();
     console.log(`😊 Server running on port ${PORT}`);
   } catch (error) {
-    console.error("❌ Failed to connect MongoDB:", err);
+    console.error("❌ Failed to connect MongoDB:", error);
   }
 });
+
 
 
